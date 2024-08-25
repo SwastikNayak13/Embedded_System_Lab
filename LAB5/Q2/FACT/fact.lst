@@ -1,0 +1,140 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET,DATA,READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         __Vectors
+    4 00000000 10001000        DCD              0x10001000
+    5 00000004 00000000        DCD              Reset_Handler
+    6 00000008                 ALIGN
+    7 00000008                 AREA             mycode,CODE,READONLY
+    8 00000000         ENTRY
+    9 00000000                 EXPORT           Reset_Handler
+   10 00000000         Reset_Handler
+   11 00000000         
+   12 00000000         
+   13 00000000 4809            LDR              R0,=N
+   14 00000002 6800            LDR              R0,[R0]
+   15 00000004         
+   16 00000004 F000 F801       BL               FACT
+   17 00000008         
+   18 00000008         STOP
+   19 00000008 E7FE            B                STOP
+   20 0000000A         
+   21 0000000A         FACT
+   22 0000000A 2801            CMP              R0,#1
+   23 0000000C D004            BEQ              EXIT
+   24 0000000E B501            PUSH{R0,LR}
+   25 00000010 F1A0 0001       SUB              R0,#1
+   26 00000014 F7FF FFF9       BL               FACT
+   27 00000018         EXIT
+   28 00000018 E8BD 4004       POP{R2,LR}
+   29 0000001C FB00 F002       MUL              R0,R2
+   30 00000020 4770            BX               LR
+   31 00000022         
+   32 00000022 00 00 00000003 
+                       N       DCD              0X3
+   33 00000028         
+   34 00000028                 END
+              00000000 
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=fact.d -
+ofact.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Keil\ARM\Inc\NX
+P\LPC17xx --predefine="__EVAL SETA 1" --list=fact.lst fact.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file fact.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 3 in file fact.s
+   Uses
+      At line 2 in file fact.s
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+ENTRY 00000000
+
+Symbol: ENTRY
+   Definitions
+      At line 8 in file fact.s
+   Uses
+      None
+Comment: ENTRY unused
+EXIT 00000018
+
+Symbol: EXIT
+   Definitions
+      At line 27 in file fact.s
+   Uses
+      At line 23 in file fact.s
+Comment: EXIT used once
+FACT 0000000A
+
+Symbol: FACT
+   Definitions
+      At line 21 in file fact.s
+   Uses
+      At line 16 in file fact.s
+      At line 26 in file fact.s
+
+N 00000024
+
+Symbol: N
+   Definitions
+      At line 32 in file fact.s
+   Uses
+      At line 13 in file fact.s
+Comment: N used once
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 10 in file fact.s
+   Uses
+      At line 5 in file fact.s
+      At line 9 in file fact.s
+
+STOP 00000008
+
+Symbol: STOP
+   Definitions
+      At line 18 in file fact.s
+   Uses
+      At line 19 in file fact.s
+Comment: STOP used once
+mycode 00000000
+
+Symbol: mycode
+   Definitions
+      At line 7 in file fact.s
+   Uses
+      None
+Comment: mycode unused
+7 symbols
+
+
+
+ARM Macro Assembler    Page 2 Alphabetic symbol ordering
+Relocatable symbols
+
+342 symbols in table

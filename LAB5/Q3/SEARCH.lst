@@ -1,0 +1,132 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET,DATA,READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         __Vectors
+    4 00000000 10001000        DCD              0x10001000
+    5 00000004 00000000        DCD              Reset_Handler
+    6 00000008                 ALIGN
+    7 00000008                 AREA             mycode,CODE,READONLY
+    8 00000000         ENTRY
+    9 00000000                 EXPORT           Reset_Handler
+   10 00000000         Reset_Handler
+   11 00000000         
+   12 00000000 4910            LDR              R1,=N
+   13 00000002 F240 1321       LDR              R3,=0X121
+   14 00000006 F04F 040A       MOV              R4,#10
+   15 0000000A         
+   16 0000000A F851 2B04 
+                       UP      LDR              R2,[R1],#4
+   17 0000000E 429A            CMP              R2,R3
+   18 00000010 BF08 3501       ADDEQ            R5,#1       ; R5 stores 1 if va
+                                                            lue is found else 0
+                                                            
+   19 00000014 D001            BEQ              STOP
+   20 00000016 3C01            SUBS             R4,#1
+   21 00000018 D1F7            BNE              UP
+   22 0000001A         
+   23 0000001A         STOP
+   24 0000001A E7FE            B                STOP
+   25 0000001C         
+   26 0000001C 00000001 
+              00000002 
+              00000003 
+              00000004 
+              00000005 
+              00000006 
+              00000007 
+              00000008 
+              00000009 
+              00000121 N       DCD              0X1,0X2,0X3,0X4,0X5,0X6,0X7,0X8
+,0X9,0X121
+   27 00000044         
+   28 00000044                 END
+              00000000 
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=SEARCH.d
+ -oSEARCH.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Keil\ARM\In
+c\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=SEARCH.lst SEARCH.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file SEARCH.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 3 in file SEARCH.s
+   Uses
+      At line 2 in file SEARCH.s
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+ENTRY 00000000
+
+Symbol: ENTRY
+   Definitions
+      At line 8 in file SEARCH.s
+   Uses
+      None
+Comment: ENTRY unused
+N 0000001C
+
+Symbol: N
+   Definitions
+      At line 26 in file SEARCH.s
+   Uses
+      At line 12 in file SEARCH.s
+Comment: N used once
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 10 in file SEARCH.s
+   Uses
+      At line 5 in file SEARCH.s
+      At line 9 in file SEARCH.s
+
+STOP 0000001A
+
+Symbol: STOP
+   Definitions
+      At line 23 in file SEARCH.s
+   Uses
+      At line 19 in file SEARCH.s
+      At line 24 in file SEARCH.s
+
+UP 0000000A
+
+Symbol: UP
+   Definitions
+      At line 16 in file SEARCH.s
+   Uses
+      At line 21 in file SEARCH.s
+Comment: UP used once
+mycode 00000000
+
+Symbol: mycode
+   Definitions
+      At line 7 in file SEARCH.s
+   Uses
+      None
+Comment: mycode unused
+6 symbols
+341 symbols in table
