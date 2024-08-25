@@ -28,7 +28,7 @@ up 	ldr r3, [r0,r4]
 outer_loop 
 	mov r5, r0
 	ldr r7, [r5]
-	mov r4, r3 ; R4 contains no of compare in a pass
+	mov r4, r3 
 inner_loop 
 	ldr r6, [r5], #4 
 	 
