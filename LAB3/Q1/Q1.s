@@ -1,0 +1,40 @@
+	AREA RESET, DATA, READONLY
+	EXPORT __Vectors
+__Vectors 
+	DCD 0x40001000 ; stack pointer value when stack is empty
+	DCD Reset_Handler ; reset vector
+ 
+	ALIGN
+	AREA mycode, CODE, READONLY
+ENTRY
+	EXPORT Reset_Handler
+Reset_Handler
+
+	LDR R0,=NUM
+	LDR R1,[R0],#4
+	MOV R5,#9
+	
+BACK	
+	LDR R3,[R0],#4
+	ADDS R1,R3
+	ADCS R6,#0X0
+	SUBS R5,#1
+	BNE BACK
+
+	
+	LDR R7,=RES
+	STR R1,[R7],#4
+	STR R6,[R7]
+	
+STOP
+ 	B STOP
+
+
+
+
+NUM DCD 0XFFFFFFFF, 0XFFFFFFFF,  0XFFFFFFFF, 0XFFFFFFFF, 0XFFFFFFFF, 0XFFFFFFFF, 0XFFFFFFFF, 0XFFFFFFFF, 0XFFFFFFFF, 0XFFFFFFFF
+
+	AREA data, DATA, READWRITE
+RES DCD 0
+
+	END
